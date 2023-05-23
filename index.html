@@ -5,6 +5,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My first html document</title>
+    <style>
+      .nav-list {
+        display: flex;
+        justify-content: space-around;
+        margin: 10rem 0;
+        list-style: none;
+      }
+      .nav-list li {
+        cursor: pointer;
+        padding: 6px;
+        background-color: blue;
+        border-radius: 5px;
+        color: white;
+      }
+    </style>
   </head>
-  <body></body>
+  <body style="background-color: aquamarine">
+    <h1 style="color: blue">THIS IS MY PAGE123</h1>
+    <h2 style="font-family: sans-serif">Heading</h2>
+    <p style="font-size: 50px">This is a paragraph</p>
+    <!-- You need to add https:// in order for link to work -->
+    <a href="https://www.google.com/">This is a link</a>
+    <img
+      src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+      alt=""
+      style="width: 200px; height: 200px; border-radius: 50%"
+    />
+    <!-- break tag -->
+    <br />
+    <b style="display: block">this is a bold text</b>
+    <small>this is a tiny text</small>
+    <!--  -->
+    <div
+      style="
+        height: 5rem;
+        width: 25rem;
+        color: red;
+        background-color: blanchedalmond;
+      "
+    >
+      <p>this element is inside div</p>
+    </div>
+    <p>this elemnt is not in div</p>
+    <!-- we centered div by using  position: relative; left: 25%. We use relative to preserve its space for the form -->
+    <div style="width: 50%; position: relative; left: 25%">
+      <form style="display: flex; flex-direction: column">
+        <label style="color: gray" for="name">Name</label>
+        <input
+          style="border: none; padding: 1rem; border-radius: 5px"
+          type="text"
+          name="name1"
+          id="name"
+        />
+        <label style="color: gray" for="email">Email</label>
+        <input
+          style="border: none; padding: 1rem; border-radius: 5px"
+          type="email"
+          name="email"
+          id="email"
+        />
+        <label style="color: gray" for="password">Password</label>
+        <input
+          style="border: none; padding: 1rem; border-radius: 5px"
+          type="password"
+          name="password"
+          id="password"
+        />
+        <input
+          style="
+            border: none;
+            padding: 1rem;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            color: white;
+            background-color: burlywood;
+          "
+          type="submit"
+          value="submit"
+        />
+      </form>
+    </div>
+    <ul class="nav-list">
+      <li
+        style="
+          cursor: pointer;
+          padding: 6px;
+          background-color: blue;
+          border-radius: 5px;
+          color: white;
+        "
+      >
+        Name
+      </li>
+      <li>Contact</li>
+      <li>Sign up</li>
+      <li
+        style="
+          cursor: pointer;
+          padding: 6px;
+          background-color: blue;
+          border-radius: 5px;
+          color: white;
+        "
+      >
+        Sign in
+      </li>
+    </ul>
+    <ol>
+      <li>list item 1</li>
+      <li>list item 2</li>
+      <li>list item 3</li>
+      <li>list item 4</li>
+    </ol>
+  </body>
 </html>

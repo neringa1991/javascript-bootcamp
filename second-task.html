@@ -17,7 +17,14 @@ NOTE: You can use either inline or internal CSS -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- in case we need to add css file to the html document -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <style>
+      /* You need to set the actual page to margin:0 and padding: 0 to the actual html, not just the body. */
+      * {
+        margin: 0;
+        padding: 0;
+      }
       body {
         min-height: 100vh;
         display: flex;
@@ -26,7 +33,7 @@ NOTE: You can use either inline or internal CSS -->
       .nav-container {
         padding: 5rem 16rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
       }
       .nav-list {
@@ -65,7 +72,7 @@ NOTE: You can use either inline or internal CSS -->
         flex-direction: column;
         justify-content: center;
         width: 20rem;
-        height: 15rem;
+        height: 20rem;
         background-color: rgb(0, 124, 137, 0.2);
         border-radius: 50%;
         text-align: center;

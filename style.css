@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #397584;
+  overflow-x: hidden;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4.8rem;
+  gap: 10rem;
+}
+
+.resume-photo {
+  width: 30rem;
+  /* height: 40rem; */
+}
+.heading-primary,
+.header-text-box p {
+  text-transform: uppercase;
+}

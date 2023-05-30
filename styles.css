@@ -78,7 +78,7 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: self-start;
+  align-items: start;
   flex-direction: column;
   letter-spacing: 2px;
   background-color: aliceblue;

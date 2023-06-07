@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.main-content {
+  width: 100vw;
+  height: 100vh;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 250px 300px 350px;
+  grid-template-rows: 250px 300px 350px;
+  grid-template-columns: repeat(6, 2fr);
+  grid-template-rows: repeat(6, 2fr);
+  gap: 5px;
+  /* justify-content: space-around;
+  align-items: center; */
+}
+/* .box {
+  width: 250px;
+  height: 250px;
+  background-color: aqua;
+  border: 1px solid gray;
+}
+
+.box:first-child {
+  background-color: red;
+} */
+
+/* by default div doesn't have height and width */
+.content-1 {
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  /* this will allow to have 3 to 1 ratio */
+  /* flex: 1; */
+}
+.content-2 {
+  background-color: blue;
+  height: 100%;
+  width: 100%;
+  /* this will allow to have 3 to 1 ratio */
+  /* flex: 2; */
+}
+
+.content-3 {
+  background-color: orange;
+  height: 100%;
+  width: 100%;
+  /* this will allow to have 3 to 1 ratio */
+  /* flex: 1; */
+}
+
+/* @media screen and (max-width: 500px) {
+  .main-content {
+    flex-direction: column;
+  }
+} */

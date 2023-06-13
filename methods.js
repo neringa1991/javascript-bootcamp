@@ -8,7 +8,7 @@ const myMapFunc = function (arr, callbackFunc) {
   const newArr = [];
 
   for (let i = 0; i < arr.length; i++) {
-    const mapedItem = callbackFunc(arr[i]);
+    const mapedItem = callbackFunc(arr[i], i, arr);
     newArr.push(mapedItem);
   }
   return newArr;
@@ -23,7 +23,7 @@ const myFilterFunc = function (arr, callbackFunc) {
   const newArr = [];
 
   for (let i = 0; i < arr.length; i++) {
-    const isFiltered = callbackFunc(arr[i]);
+    const isFiltered = callbackFunc(arr[i], i, arr);
     if (isFiltered) {
       newArr.push(arr[i]);
     }
@@ -38,7 +38,7 @@ const callbackEvery = (x) => typeof x === "number";
 const myEveryFunc = function (arr, callbackFunc) {
   let result;
   for (let i = 0; i < arr.length; i++) {
-    const isEvery = callbackFunc(arr[i]);
+    const isEvery = callbackFunc(arr[i], i, arr);
 
     if (!isEvery) {
       result = isEvery;
@@ -57,7 +57,7 @@ const callbackSome = (x) => x < 0;
 const mySomeFunc = function (arr, callbackFunc) {
   let result;
   for (let i = 0; i < arr.length; i++) {
-    const isSome = callbackFunc(arr[i]);
+    const isSome = callbackFunc(arr[i], i, arr);
 
     if (isSome) {
       result = isSome;
@@ -77,7 +77,7 @@ const initial = 5;
 const myReduceFunc = function (arr, callbackFunc, initialValue) {
   let result;
   for (let i = 0; i < arr.length; i++) {
-    initialValue = callbackFunc(initialValue, arr[i]);
+    initialValue = callbackFunc(initialValue, arr[i], i, arr);
   }
   return initialValue;
 };
@@ -106,3 +106,64 @@ function mySort(arr) {
 }
 
 console.log(mySort([29, 72, 98, 13, 87, 66, 52, 51, 36])); // output [13, 29, 36, 51, 52, 66, 72, 87, 98]
+
+// Teacher's solution***************************************************************
+
+//MAP
+const customMapFunc = (array, callback) => {
+  const answer = [];
+  for (i = 0; i < array.length; i++) {
+    answer.push(callback(array[i], i, array));
+  }
+  return answer;
+};
+console.log(customMapFunc(arr, (item, index, arr) => index));
+
+//FILTER
+const customFilterFunc = (array, callback) => {
+  const answer = [];
+  array.forEach((item, index, arr) => {
+    if (callback(item, index, arr)) {
+      answer.push(item);
+    }
+  });
+  return answer;
+};
+
+console.log(customFilterFunc(arr, (item) => item < 2));
+
+// EVERY
+const customEveryFunc = (array, callback) => {
+  for (i = 0; i < array.length; i++) {
+    if (!callback(array[i], i, array)) {
+      return false;
+    }
+    return true;
+  }
+};
+
+console.log(customEveryFunc(arr, (item) => item === 2));
+
+// SOME
+const customSomeFunc = (array, callback) => {
+  for (i = 0; i < array.length; i++) {
+    if (callback(array[i], i, array)) {
+      return true;
+    }
+    return false;
+  }
+};
+console.log(customSomeFunc(arr, (item) => item === 2));
+
+// REDUCE
+const customReduceFunc = (array, callback) => {
+  let accumulator = [];
+
+  for (i = 0; i < array.length; i++) {
+    accumulator = callback(accumulator, arr[i], i, array);
+  }
+  return accumulator;
+};
+
+console.log(customReduceFunc(arr, (prev, curr) => prev + curr));
+// arr.reduce((prev, curr, currentIndex, array) => prev + curr);

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import express from "express";
-import studentRoute from "./routes/studentRoute.js";
+// import studentRoute from "./routes/studentRoute.js";
+import userRoute from "./routes/userRoute.js";
 
 const app = express();
 const port = 3005;
@@ -13,7 +14,7 @@ const connectionToDB = async () => {
   try {
     // we connect to the database
     await mongoose.connect(
-      "mongodb+srv://neringakandrotaite:neringakandrotaite@cluster0.8r8mpkw.mongodb.net/students"
+      "mongodb+srv://neringakandrotaite:neringakandrotaite@cluster0.8r8mpkw.mongodb.net/user"
     );
 
     console.log("Connected to DB");
@@ -41,7 +42,8 @@ const connectionToDB = async () => {
   //     console.log(error);
   //   });
 };
-app.use("/student", studentRoute);
+// app.use("/student", studentRoute);
+app.use("/user", userRoute);
 
 app.listen(port, () => {
   connectionToDB();

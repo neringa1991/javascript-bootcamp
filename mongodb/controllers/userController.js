@@ -1,10 +1,53 @@
 import userModel from "../models/userModel.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
+// We will handle logging session for the user
+export const loginUser = async (req, res) => {
+  try {
+    const foundUser = await userModel.findOne({username: req.body.username});
+
+    if (!foundUser) {
+      return res.status(404).send(`Username or password is wrong`);
+    }
+    // we decript the data to compare the password
+    const isUserPasswordCorrect = bcrypt.compareSync(
+      req.body.password.toString(),
+      foundUser.password
+    );
+
+    if (!isUserPasswordCorrect) {
+      return res.status(404).send("Password is not correct");
+    }
+
+    const token = jwt.sign({id: foundUser._id}, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    // cokies are better to store session tokens than localStorage. Advantages of cookies: it is more secure, we can prevent cross-site attacks. Localstorage capable of storage large data, such as img
+
+    return res
+      .cookie("session_token", token, {
+        // eliminates cross-site scripting vulnerability
+        httpOnly: true,
+      })
+      .status(200)
+      .send(`Hello, ${foundUser.username} successfully logged in`);
+  } catch (error) {}
+};
 // add user. req and res are comming from express
 export const createUser = async (req, res) => {
   try {
+    // to hide passwords we will use bcrypt library
+    // salt takes our incryption key and tries to encrypt it. Default is 10 times (=rounds)
+    const salt = bcrypt.genSaltSync(10);
+
+    // with hash we would return a promise. With hashSynce no promise is returned
+    const hashPassword = bcrypt.hashSync(req.body.password.toString(), salt);
+
     const newUser = new userModel({
       ...req.body,
+      password: hashPassword,
+      isAdmin: false,
     });
 
     //below is the same as above

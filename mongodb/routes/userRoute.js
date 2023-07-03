@@ -14,7 +14,7 @@ import {verifySessionToken} from "../middleware/authenticationCheck.js";
 const router = express.Router();
 
 router.post("/create", createUser);
-router.get("/login", loginUser);
+router.post("/login", loginUser); //posts
 
 // below is the same as above
 // router.post("/create", async (req, res) => {
@@ -36,10 +36,11 @@ router.get("/login", loginUser);
 // we will add route which will configure our routes. This will be middleware which will allow the specific number of sessions. This will handle the session
 
 // these routes needs to be protected
-router.get("/get-all", verifySessionToken, getAllUsers);
+router.get("/get-all", verifySessionToken, getAllUsers); //admins
 router.get("/get", verifySessionToken, getUser);
-router.delete("/delete", verifySessionToken, deleteUser);
-router.put("/update", verifySessionToken, updateUser);
+router.delete("/delete", verifySessionToken, getAllUsers); //admins
+router.delete("/delete-all", verifySessionToken, deleteUser);
+router.put("/update/:user", verifySessionToken, updateUser);
 
 // params is below and body is url
 //req.params.name123

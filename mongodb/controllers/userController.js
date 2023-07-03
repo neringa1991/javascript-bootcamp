@@ -5,14 +5,17 @@ import jwt from "jsonwebtoken";
 // We will handle logging session for the user
 export const loginUser = async (req, res) => {
   try {
+    // we need await because below is a promise
     const foundUser = await userModel.findOne({username: req.body.username});
 
     if (!foundUser) {
       return res.status(404).send(`Username or password is wrong`);
     }
-    // we decript the data to compare the password
+    // we decript the data to compare the password of the found user
     const isUserPasswordCorrect = bcrypt.compareSync(
       req.body.password.toString(),
+
+      // below is the password which is passed by the perso  who tries to login
       foundUser.password
     );
 
@@ -38,7 +41,7 @@ export const loginUser = async (req, res) => {
 export const createUser = async (req, res) => {
   try {
     // to hide passwords we will use bcrypt library
-    // salt takes our incryption key and tries to encrypt it. Default is 10 times (=rounds)
+    // salt takes our encryption key and tries to encrypt (=salt) it with 10 rounds of encryption. Default is 10 times (=rounds)
     const salt = bcrypt.genSaltSync(10);
 
     // with hash we would return a promise. With hashSynce no promise is returned
@@ -47,6 +50,8 @@ export const createUser = async (req, res) => {
     const newUser = new userModel({
       ...req.body,
       password: hashPassword,
+
+      // even if hacker add isAdmin:true, we will have isAdmin: false in our database as the result of the below line
       isAdmin: false,
     });
 
@@ -120,7 +125,8 @@ export const updateUser = async (req, res) => {
   try {
     const user = await userModel.findOneAndUpdate(
       {
-        username: req.params.username,
+        // we use user because we added such name inside controllers
+        username: req.params.user,
       },
       {
         $set: req.body,

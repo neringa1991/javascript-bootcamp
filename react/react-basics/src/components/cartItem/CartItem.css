@@ -5,10 +5,18 @@
   align-items: center;
   justify-content: center;
   border: 1px solid gray;
+  position: relative;
 }
 
 .CartItemImage {
   width: 100px;
   height: 100px;
   object-fit: cover;
+}
+.CartItemImg {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 15px;
+  top: 5px;
 }

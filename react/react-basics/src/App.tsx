@@ -2,6 +2,7 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import Topbar from "./components/topbar/Topbar";
+import {Layout} from "./Layout";
 import HomePage from "./pages/homepage/HomePage";
 import {LoginPage} from "./pages/loginPage/LoginPage";
 
@@ -10,12 +11,11 @@ function App() {
   //react allows to return only 1 parent element
   return (
     // this is a fragment, <div> without letters. Allows to return the same elements more than once
-    <>
-      {/* we can have Topbar here if it will be used in all the pages */}
-
+    <Layout>
+      {/* homepage is treated as prop */}
       <HomePage />
       {/* <LoginPage /> */}
-    </>
+    </Layout>
   );
 }
 

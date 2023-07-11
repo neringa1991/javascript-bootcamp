@@ -1,13 +1,4 @@
 .Cart {
-  width: 300px;
-  height: 200px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Cart img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  flex-wrap: wrap;
 }

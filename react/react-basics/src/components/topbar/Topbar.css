@@ -1,4 +1,7 @@
 .Topbar {
+  width: 100vw;
+  height: 10vh;
+  background-color: lightblue;
   display: flex;
   justify-content: space-between;
 }

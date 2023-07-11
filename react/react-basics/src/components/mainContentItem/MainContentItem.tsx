@@ -3,7 +3,7 @@ import "./MainContentItem.css";
 
 // @ts-ignore
 import CartIcon from "../../assets/icons8-cart-50.png";
-import Button from "../../reusableComponents/Button";
+
 // provides the type for component
 interface MainContentItemProps {
   title: string;
@@ -25,7 +25,7 @@ function MainContentItem({title, text, image, button}: MainContentItemProps) {
         <p>{text}</p>
         <img className="img" src={image} alt="" />
         {/* <Button></Button> */}
-        {/* <Button text="Login in" icon="" /> */}
+
         <button className="Button">
           {button} <img className="ButtonIcon" src={CartIcon} alt=""></img>
         </button>

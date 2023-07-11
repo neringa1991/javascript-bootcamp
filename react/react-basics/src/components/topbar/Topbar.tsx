@@ -1,15 +1,19 @@
-import React from "react";
 // rfce shortcut
 import "./Topbar.css";
 import Button from "../../reusableComponents/Button";
+
 // @ts-ignore
-import CartIcon from "../../assets/icons8-cart-50.png";
+import CartIcon from "../../assets/login.png";
 
 const Topbar = () => {
   return (
     <div className="Topbar">
       <div>
-        <Button text="Login in" icon="" />
+        <Button buttonColor="gray" text="Login in" icon={CartIcon} />
+        <Button text="HOME" />
+        <Button text="PRODUCTS" />
+        <Button text="BEST SELLERS" />
+        <Button buttonColor="red" text="Register" icon={CartIcon} />
       </div>
     </div>
   );

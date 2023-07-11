@@ -1,18 +1,19 @@
-import React from "react";
+import "./Button.css";
 interface Buttonprops {
-  icon: string;
+  icon?: string;
   text: string;
   buttonColor?: "green" | "red" | "gray";
 }
 function Button({icon, text, buttonColor}: Buttonprops) {
   return (
     <button
-      className="Button"
+      className="SharedButton"
       style={
-        buttonColor ? {backgroundColor: buttonColor} : {backgroundColor: "gray"}
+        buttonColor ? {backgroundColor: buttonColor} : {backgroundColor: "pink"}
       }
     >
-      {text} <img className="ButtonIcon" src={icon} alt=""></img>
+      {/* only if there's an icon, only then show the image */}
+      {text} {icon && <img className="ButtonIcon" src={icon} alt=""></img>}
     </button>
   );
 }

@@ -1,20 +1,35 @@
 import React from "react";
 import "./MainContentItem.css";
 
+// @ts-ignore
+import CartIcon from "../../assets/icons8-cart-50.png";
+import Button from "../../reusableComponents/Button";
 // provides the type for component
 interface MainContentItemProps {
   title: string;
   text: string;
   image: string;
+  // ? allows for property to be not required
+  button?: string;
 }
 
-function MainContentItem({title, text, image}: MainContentItemProps) {
+function MainContentItem({title, text, image, button}: MainContentItemProps) {
+  //TRUTHY VALUES
+  // 1, -1, "false", "0", "null", "undefined", [], {}, true;
+  // FALSY
+  // 0, "", false, udefined
   return (
-    <div className="MainContentITEM">
-      <h1>{title}</h1>
-      <p>{text}</p>
-      <img src="https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*"></img>
-      <button>DONATE</button>
+    <div className="MainContent">
+      <div className="content">
+        <h1>{title ? title : "No title..."}</h1>
+        <p>{text}</p>
+        <img className="img" src={image} alt="" />
+        {/* <Button></Button> */}
+        {/* <Button text="Login in" icon="" /> */}
+        <button className="Button">
+          {button} <img className="ButtonIcon" src={CartIcon} alt=""></img>
+        </button>
+      </div>
     </div>
   );
 }

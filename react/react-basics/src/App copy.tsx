@@ -13,7 +13,7 @@ function App() {
     setState((prev: any) => prev + 1);
   };
 
-  //
+  //dependency array should be always state. state is coming from useState()
   useEffect(() => {
     if (isGameFinished) {
       if (state >= 5) {
@@ -43,24 +43,10 @@ function App() {
       setisGameFinished(true);
     }, 2000);
   };
-
-  return (
-    <div>
-      <h1>CLICKING GAME</h1>
-
-      {/* below will be visible only when th game is not started */}
-      {!isGameStarted && (
-        <button
-          onClick={() => {
-            handleStartGame();
-          }}
-        >
-          START THE GAME
-        </button>
-      )}
-
-      {/* the below code will be visible only when the game starts */}
-      {isGameStarted && !isGameFinished && (
+  // this was extracted from html part
+  const mainGameAction = () => {
+    if (isGameStarted && !isGameFinished) {
+      return (
         <div>
           <button
             onClick={() => {
@@ -75,7 +61,26 @@ function App() {
           <br />
           CLICKED TIMES: {state}
         </div>
+      );
+    }
+  };
+  return (
+    <div>
+      <h1>CLICKING GAME</h1>
+
+      {/* below will be visible only when th game is not started */}
+      {!isGameStarted && (
+        <button
+          onClick={() => {
+            handleStartGame();
+          }}
+        >
+          START THE GAME
+        </button>
       )}
+      {mainGameAction()}
+      {/* the below code will be visible only when the game starts */}
+
       <div>
         {displayGameWon()}
         {/* {gameWon && isGameFinished ? (

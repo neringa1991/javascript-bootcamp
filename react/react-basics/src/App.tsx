@@ -1,22 +1,27 @@
-// import React from "react";
-// import logo from "./logo.svg";
 import "./App.css";
-import Topbar from "./components/topbar/Topbar";
-import {Layout} from "./Layout";
-import HomePage from "./pages/homepage/HomePage";
-import {LoginPage} from "./pages/loginPage/LoginPage";
+import {useState, useEffect} from "react";
 
 // RULE 1: YOU HAVE TO HAVE PAGES NOT COMPONENENTS IN THIS FILE
 function App() {
-  //react allows to return only 1 parent element
+  const [state, setState] = useState(0);
+  const [start, setStart] = useState(false);
+  console.log("COMPONENT GOT RERENDERED");
+
+  // this runs only one time when component gets created. It has dependency array and if add item into array, useEffect will be trigered whenever item in array is triggered
+  useEffect(() => {
+    console.log("USEEFFECT GOT TRIGGERED");
+  }, [state]);
+
   return (
-    // this is a fragment, <div> without letters. Allows to return the same elements more than once
-    <Layout>
-      {/* homepage is treated as prop */}
-      <HomePage />
-      {/* <LoginPage /> */}
-    </Layout>
+    <>
+      <button onClick={() => setStart(true)}>START</button>
+      <button onClick={() => setStart(false)}>CLICK ME</button>
+      "Current is: {start ? "true" : "false"}"
+      <button onClick={() => setState((argument) => argument + 1)}>
+        CLICK ME
+      </button>
+      <h1>{state}</h1>
+    </>
   );
 }
-
 export default App;

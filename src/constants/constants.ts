@@ -1,0 +1,3 @@
+const MONTHS = {
+  JANUARY: "January",
+};

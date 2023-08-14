@@ -13,7 +13,7 @@ const connectionToDB = async () => {
   try {
     // we connect to the database
     await mongoose.connect(
-      "mongodb+srv://neringakandrotaite:neringakandrotaite@cluster0.8r8mpkw.mongodb.net/students"
+      ""
     );
 
     console.log("Connected to DB");
@@ -29,7 +29,7 @@ const connectionToDB = async () => {
   //BELOW IS THE SAME AS ABOVE
   // mongoose
   //   .connect(
-  //     "mongodb+srv://neringakandrotaite:neringakandrotaite@cluster0.8r8mpkw.mongodb.net/"
+  //     ""
   //   )
   //   .then(() => {
   //     console.log("Connection to DB is successful");
